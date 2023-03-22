@@ -8,6 +8,8 @@
     <link rel="stylesheet" href={{ asset('css/all.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/mycss.css') }}>
+    <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.css') }}>
+    <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.min.css') }}>
 </head>
 <body>
 
@@ -58,7 +60,10 @@
 
       </nav>
 
+
     @yield('content')
+
+    @extends('layouts.footer')
 
 
 
