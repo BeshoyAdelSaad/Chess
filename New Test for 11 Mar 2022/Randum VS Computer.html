@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/My CSS v1.css">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/css for hh.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style type="text/css">
+      .highlight-white {
+        box-shadow: inset 0 0 3px 3px yellow;
+      }
+      .highlight-black {
+        box-shadow: inset 0 0 3px 3px blue;
+      }
+      </style>
+    <title>Randum VS Computer</title>
+    
+</head>
+<body>
+<!-- Start Nav  -->
+<div class="divforulLinks">
+  <ul class="topnav">
+    <li><a class="active" href="Home.html">Home</a></li>
+    <li><a href="Randum VS Computer.html">Randum VS Computer</a></li>
+    <li><a href="Player VS Player.html">Player VS Player</a></li>
+    <li><a href="Puzzles.html">Puzzles</a></li>
+</ul>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+
+</div>
+
+<!-- End Nav  -->
+
+
+
+  <!-- Start Setting Box -->
+<div class="settings-Box">
+
+  <div class="toggle-settings">
+      <i class="fa fa-gear"></i>
+  </div>
+<div class="settings-container">
+<div class="option-Box">
+<h4>Colors of chess board</h4>
+<ul class="colors-list">
+  <li class="active" data-color="#03a9f4a3"></li>
+  <li data-color="#03A9F4"></li>
+  <li data-color="#ba64c9"></li>
+  <li data-color="#aba0dd"></li>
+  <li data-color="#329288"></li>
+  <li data-color="#4CAF50"></li>
+
+</ul>
+</div>
+
+</div>
+</div>
+<!-- End Setting Box -->
+
+
+
+
+  <div id="myBoard" style="width: 400px"></div>
+
+    <div class="mainDivforDataOfChessBoard">
+      <div class="ChessBoardOfStatus">
+        <label>Status: </label>
+        <div id="status"></div>
+        <!-- <label>FEN:</label>
+        <div id="fen"></div> -->
+      </div>
+  
+      <div class="ChessBoardOfMoves">
+        <label>PGN:</label>
+        <div id="pgn"></div>
+      </div>
+    </div>
+
+   
+
+
+    <script src="js/My Java Script v1.js"></script>
+    <script src="js/My Java Script v2.js"></script>
+    <script src="js/chess Java Script.js"></script>
+    <script src="js/js for hh.js"></script>
+    <script src="js/My puzzles.js"></script>
+
+
+    <script>
+// NOTE: this example uses the chess.js library:
+// https://github.com/jhlywa/chess.js
+var nO = 2;
+let mypuzzl = bestMove[nO].indexOf("w")+1;
+console.log(mypuzzl);
+
+var DEFAULT_POSITION = bestMove[nO].slice(0,mypuzzl) + ' KQkq - 0 1';
+console.log(DEFAULT_POSITION);
+// NOTE: this example uses the chess.js library:
+// https://github.com/jhlywa/chess.js
+// var countMyPuzzles = AllMyPuzzles.length;
+// var nO = Math.floor(Math.random() * countMyPuzzles );
+// let mypuzzlForw = AllMyPuzzles[nO].indexOf(" w")+2;
+// let mypuzzlForb = AllMyPuzzles[nO].indexOf(" b")+2;
+// var maxNo = Math.max(mypuzzlForw, mypuzzlForb);
+// console.log(nO);
+// var DEFAULT_POSITION = AllMyPuzzles[nO].slice(0,maxNo) + ' KQkq - 0 1';
+// var typePussles = AllMyPuzzles;
+
+var board = null
+var game = new Chess()
+var whiteSquareGrey = '#f0d0db'
+var blackSquareGrey = '#ed97b3'
+
+function removeGreySquares () {
+  $('#myBoard .square-55d63').css('background', '')
+}
+
+function greySquare (square) {
+  var $square = $('#myBoard .square-' + square)
+
+  var background = whiteSquareGrey
+  if ($square.hasClass('black-3c85d')) {
+    background = blackSquareGrey
+  }
+
+  $square.css('background', background)
+}
+
+function onDragStart (source, piece) {
+  // do not pick up pieces if the game is over
+  if (game.game_over()) return false
+
+  // or if it's not that side's turn
+  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
+      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+    return false
+  }
+}
+
+function onDrop (source, target) {
+  removeGreySquares()
+
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+}
+
+function onMouseoverSquare (square, piece) {
+  // get list of possible moves for this square
+  var moves = game.moves({
+    square: square,
+    verbose: true
+  })
+
+  // exit if there are no moves available for this square
+  if (moves.length === 0) return
+
+  // highlight the square they moused over
+  greySquare(square)
+
+  // highlight the possible squares for this piece
+  for (var i = 0; i < moves.length; i++) {
+    greySquare(moves[i].to)
+  }
+}
+
+function onMouseoutSquare (square, piece) {
+  removeGreySquares()
+}
+
+function onSnapEnd () {
+  board.position(game.fen())
+}
+
+
+var config = {
+  draggable: true,
+  position: DEFAULT_POSITION,
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onMouseoutSquare: onMouseoutSquare,
+  onMouseoverSquare: onMouseoverSquare,
+  onSnapEnd: onSnapEnd
+}
+board = Chessboard('myBoard', config)
+    </script>
+</body>
+</html>

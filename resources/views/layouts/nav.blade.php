@@ -10,6 +10,8 @@
     <link rel="stylesheet" href={{ asset('css/mycss.css') }}>
     <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.css') }}>
     <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.min.css') }}>
+
+
 </head>
 <body>
 
@@ -59,9 +61,14 @@
         </div>
 
       </nav>
+    <script src={{ asset('js/my-puzzles.js') }}></script>
+    <script src={{ asset('js/jquery-3.6.4.min.js') }}></script>
+    <script src={{ asset('js/chessboard-1.0.0.min.js') }}></script>
+    <script src={{ asset('js/chessboard-1.0.0.js') }}></script>
 
 
     @yield('content')
+
 
     @extends('layouts.footer')
 

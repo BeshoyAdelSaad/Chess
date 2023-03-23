@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="js/chess Java Script.js"></script>
+
+</head>
+<body>
+    <style>
+        #gg{
+text-align: center;
+border: 3px solid blue;
+background-color: lightgray;
+padding: 10px;
+color: red;
+width: 350px;
+margin-left: 38%;
+        }
+
+        #gg:hover {
+background-color: yellow;
+color: black;
+font-size: 130%;
+
+
+        }
+        button {
+            border-style: none;
+            background-color: rgb(236, 46, 46);
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            margin-left: 10px;
+        
+        }
+    </style>
+<h1 id="gg">الاكلات الرئيسية</h1>
+<button id="sh" onclick="my()">أكلات شرقية</button>
+<button id="c">اكلات سورية</button>
+<button id="l">أكلات لبنانية</button>
+   
+   <script>
+function my(){
+    let bool = true;
+    let be = new Array(7);
+    let gr = "Welcome back"
+    document.getElementById('sh').innerHTML = gr;
+if (gr !== "Welcome"){
+    bool = false;
+}
+    return bool;
+}
+let x = my();
+
+document.getElementById('c').innerHTML = x;
+document.getElementById('myh3').innerHTML = ss;
+
+
+
+    </script>
+</body>
+</html>

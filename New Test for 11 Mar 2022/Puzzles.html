@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/My CSS v1.css">
+
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/css for hh.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/css.css">
+
+    <title>chess</title>
+</head>
+<body>
+<!-- Start Nav  -->
+<div class="divforulLinks">
+  <ul class="topnav">
+    <li><a class="active" href="Home.html">Home</a></li>
+    <li><a href="Randum VS Computer.html">Randum VS Computer</a></li>
+    <li><a href="Player VS Player.html">Player VS Player</a></li>
+    <li><a href="Puzzles.html">Puzzles</a></li>
+</ul>
+
+  <!-- <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div> -->
+</div>
+<!-- End Nav  -->
+
+<div id="divforbuton">
+  <button onclick="choseTypePussles(mateInOne)">Mate in one</button>
+  <button onclick="choseTypePussles(mateInTwo)">Mate in two</button>
+  <button onclick="choseTypePussles(mateInThree)">Mate in three</button>
+  <button onclick="choseTypePussles(mateInFour)">Mate in four</button>
+  <button onclick="choseTypePussles(mateInFive)">Mate in five</button>
+  <button onclick="choseTypePussles(mateInSix)">Mate in six</button>
+  <button onclick="choseTypePussles(mateInSeven)">Mate in seven</button>
+  <button onclick="choseTypePussles(mateInEight)">Mate in eight</button>
+  <button onclick="choseTypePussles(mateInNine)">Mate in nine</button>
+  <button onclick="choseTypePussles(mateInTen)">Mate in ten</button>
+  <button onclick="choseTypePussles(bestMove)">Mate in best move</button>
+  <button onclick="choseTypePussles(AllMyPuzzles)">Mate in all puzzles</button>
+</div>
+  <!-- Start Setting Box -->
+<div class="settings-Box">
+
+  <div class="toggle-settings">
+      <i class="fa fa-gear"></i>
+  </div>
+<div class="settings-container">
+<div class="option-Box">
+<h4>Colors of<br> chess board</h4>
+<ul class="colors-list">
+  <li class="active" data-color="#03a9f4a3"></li>
+  <li data-color="#03A9F4"></li>
+  <li data-color="#ba64c9"></li>
+  <li data-color="#aba0dd"></li>
+  <li data-color="#329288"></li>
+  <li data-color="#4CAF50"></li>
+
+</ul>
+</div>
+
+</div>
+<hr>
+<!-- 
+<div class="settings-container">
+  <div class="option-Box">
+  <h4>Colors of<br> chess board</h4>
+  <ul class="colors-list">
+    <li class="active" data-color="#03a9f4a3"></li>
+    <li data-color="#03A9F4"></li>
+    <li data-color="#ba64c9"></li>
+    <li data-color="#aba0dd"></li>
+    <li data-color="#329288"></li>
+    <li data-color="#4CAF50"></li>
+  
+  </ul>
+  </div>
+  
+  </div> -->
+
+</div>
+<!-- End Setting Box -->
+
+
+  <div id="myBoard" style="width: 400px; transition: 3s;"></div>
+
+  <div class="mainDivforDataOfChessBoard">
+    <div class="ChessBoardOfStatus">
+      <label>Status: </label>
+      <div id="status"></div>
+      <!-- <label>FEN:</label>
+      <div id="fen"></div> -->
+    </div>
+
+    <div class="ChessBoardOfMoves">
+      <label>PGN:</label>
+      <div id="pgn"></div>
+    </div>
+  </div>
+
+<div id="dsolve">
+  <button class="btn solve">Next puzzle</button>
+</div>
+
+<!-- <div id="arrows">
+  <i class="arrow left" onclick=""></i>
+<i class="arrow right"onclick=""></i>
+</div> -->
+    <script src="js/My Java Script v1.js"></script>
+    <script src="js/My Java Script v2.js"></script>
+    <script src="js/chess Java Script.js"></script>
+    <script src="js/js for hh.js"></script>
+    <script src="js/My puzzles.js"></script>
+
+    <script>
+// NOTE: this example uses the chess.js library:
+// https://github.com/jhlywa/chess.js
+
+function bb(){
+  
+}
+console.log('mateInOne = ' + mateInOne.length);
+console.log('mateInTwo = ' + mateInTwo.length);
+console.log('mateInThree = ' + mateInThree.length);
+console.log('mateInFour = ' + mateInFour.length);
+console.log('mateInFive = ' + mateInFive.length);
+console.log('mateInSix = ' + mateInSix.length);
+console.log('mateInSeven = ' + mateInSeven.length);
+console.log('mateInEight = ' + mateInEight.length);
+console.log('mateInNine = ' + mateInNine.length);
+console.log('mateInTen = ' + mateInTen.length);
+console.log('bestMove = ' + bestMove.length);
+console.log('The total = ' + AllMyPuzzles.length);
+    
+var $status = $('#status')
+var $pgn = $('#pgn')
+var countMyPuzzles = AllMyPuzzles.length;
+var nO = Math.floor(Math.random() * countMyPuzzles );
+let mypuzzlForw = AllMyPuzzles[nO].indexOf(" w")+2;
+let mypuzzlForb = AllMyPuzzles[nO].indexOf(" b")+2;
+
+var maxNo = Math.max(mypuzzlForw, mypuzzlForb);
+console.log(nO);
+
+
+
+var DEFAULT_POSITION = AllMyPuzzles[nO].slice(0,maxNo) + ' KQkq - 0 1';
+
+
+  var typePussles = AllMyPuzzles;
+
+var board = null
+var $board = $('#myBoard')
+var game = new Chess()
+var squareToHighlight = null
+var squareClass = 'square-55d63'
+var whiteSquareGrey = '#f0d0db'
+var blackSquareGrey = '#ed97b3'
+
+function removeGreySquares () {
+  $('#myBoard .square-55d63').css('background', '')
+}
+
+function greySquare (square) {
+  var $square = $('#myBoard .square-' + square)
+
+  var background = whiteSquareGrey
+  if ($square.hasClass('black-3c85d')) {
+    background = blackSquareGrey
+  }
+
+  $square.css('background', background)
+}
+function removeHighlights (color) {
+  $board.find('.' + squareClass)
+    .removeClass('highlight-' + color)
+}
+function x(){
+  alert('Congradulation');
+}
+function onDragStart (source, piece, position, orientation) {
+  // do not pick up pieces if the game is over
+  if (game.game_over()) return false;
+  // only pick up pieces for White
+  if (piece.search(/^b/) !== -1) return false
+}
+
+function makeRandomMove () {
+  var possibleMoves = game.moves({
+    verbose: true
+  })
+
+  // game over
+  if (possibleMoves.length === 0) return
+
+  var randomIdx = Math.floor(Math.random() * possibleMoves.length)
+  var move = possibleMoves[randomIdx]
+  game.move(move.san)
+
+  // highlight black's move
+  removeHighlights('black')
+  $board.find('.square-' + move.from).addClass('highlight-black')
+  squareToHighlight = move.to
+
+  // update the board to the new position
+  board.position(game.fen())
+}
+
+function onDrop (source, target) {
+  // see if the move is legal
+  var move = game.move({
+    from: source,
+    to: target,
+    promotion: 'q' // NOTE: always promote to a queen for example simplicity
+  })
+
+  // illegal move
+  if (move === null) return 'snapback'
+
+  // highlight white's move
+  removeHighlights('white')
+  $board.find('.square-' + source).addClass('highlight-white')
+  $board.find('.square-' + target).addClass('highlight-white')
+
+  // make random move for black
+  window.setTimeout(makeRandomMove, 250)
+  updateStatus()
+}
+function onMouseoverSquare (square, piece) {
+  // get list of possible moves for this square
+  var moves = game.moves({
+    square: square,
+    verbose: true
+  })
+
+  // exit if there are no moves available for this square
+  if (moves.length === 0) return
+
+  // highlight the square they moused over
+  greySquare(square)
+
+  // highlight the possible squares for this piece
+  for (var i = 0; i < moves.length; i++) {
+    greySquare(moves[i].to)
+  }
+}
+function onMouseoutSquare (square, piece) {
+  removeGreySquares()
+}
+function onMoveEnd () {
+  $board.find('.square-' + squareToHighlight)
+    .addClass('highlight-black')
+}
+
+// update the board position after the piece snap
+// for castling, en passant, pawn promotion
+function onSnapEnd () {
+  board.position(game.fen())
+}
+
+function updateStatus () {
+  var status = ''
+
+  var moveColor = 'White'
+  if (game.turn() === 'b') {
+    moveColor = 'Black'
+  }
+
+  // checkmate?
+  if (game.in_checkmate()) {
+    status = 'Game over, ' + moveColor + ' is in checkmate.';
+    document.location.reload();
+  }
+
+  // draw?
+  else if (game.in_draw()) {
+    status = 'Game over, drawn position'
+  }
+
+  // game still on
+  else {
+    status = moveColor + ' to move'
+
+    // check?
+    if (game.in_check()) {
+      status += ', ' + moveColor + ' is in check'
+    }
+  }
+
+  $status.html(status)
+  $pgn.html(game.pgn())
+}
+
+
+    var config = {
+  draggable: true,
+  position: start,
+  onDragStart: onDragStart,
+  onDrop: onDrop,
+  onMouseoutSquare: onMouseoutSquare,
+  onMouseoverSquare: onMouseoverSquare,
+  onMoveEnd: onMoveEnd,
+  onSnapEnd: onSnapEnd
+}
+board = Chessboard('myBoard', config)
+updateStatus ()
+
+    </script>
+</body>
+</html>

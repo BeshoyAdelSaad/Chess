@@ -21,3 +21,7 @@ Route::get('/', function () {
 Route::get('/play', function () {
     return view('play');
 });
+
+Route::get('/mate-in-two', function () {
+    return view('puzzles.mate_in_two');
+});
