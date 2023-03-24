@@ -1,31 +1,30 @@
 @extends('layouts.nav')
 
-
-@section('title', 'Play')
+@section('title', 'Mate In One')
 
 @section('content')
 
-<h1>Welcome</h1>
+<div class="container-flud my-5 p-3">
+    <div class="row p-3">
+            <div id="chessBoard" class="clo-8" style="width: 400px"></div>
+            <div class="col-4">
+                
+                    {{-- <h3>{{ $address }}</h3> --}}
+            </div>
+            <div id="getMessage"></div>
 
-<!--- Begin Example HTML ------------------------------------------------------>
-<div id="myBoard" style="width: 400px"></div>
-<label>Status:</label>
-<div id="status"></div>
-<label>FEN:</label>
-<div id="fen"></div>
-<label>PGN:</label>
-<div id="pgn"></div>
-<!--- End Example HTML -------------------------------------------------------->
-<h1 id="test"></h1>
-
+    </div>
+</div>
 
 
-<script>
-// --- Begin Example JS --------------------------------------------------------
+
+    <script>
 // NOTE: this example uses the chess.js library:
 // https://github.com/jhlywa/chess.js
-// NOTE: this example uses the chess.js library:
-// https://github.com/jhlywa/chess.js
+function testdb()
+{
+    return {!! json_encode($address) !!};
+}
 
 var board = null
 var game = new Chess()
@@ -37,16 +36,12 @@ function onDragStart (source, piece, position, orientation) {
   // only pick up pieces for White
   if (piece.search(/^b/) !== -1) return false
 }
-function msg()
-{
-  var msg = "Congratulatuin";
-  document.getElementById('test').innerHTML = msg; 
-}
+
 function makeRandomMove () {
   var possibleMoves = game.moves()
 
   // game over
-  if (possibleMoves.length === 0) return msg();
+  if (possibleMoves.length === 0) return
 
   var randomIdx = Math.floor(Math.random() * possibleMoves.length)
   game.move(possibleMoves[randomIdx])
@@ -76,17 +71,13 @@ function onSnapEnd () {
 
 var config = {
   draggable: true,
-  position: puzzels(),
+  position: testdb(),
   onDragStart: onDragStart,
   onDrop: onDrop,
   onSnapEnd: onSnapEnd
 }
-board = Chessboard('myBoard', config)
-
-</script>
+board = Chessboard('chessBoard', config)
+    </script>
 
 @endsection
-
-@extends('layouts.footer')
-
 

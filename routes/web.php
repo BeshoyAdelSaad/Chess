@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Company;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PuzzlesHandel;
+use App\Http\Controllers\CompanyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +25,21 @@ Route::get('/play', function () {
     return view('play');
 });
 
-Route::get('/mate-in-two', function () {
-    return view('puzzles.mate_in_two');
+Route::get('/mate-in-two', [CompanyController::class,'checkPos']);
+
+Route::get('/test', [CompanyController::class,'handel']);
+
+
+Route::resource('companies', CompanyController::class);
+
+Route::group(['prefix' => 'puzzles'], function(){
+
+    Route::get('/mate-in-one', [PuzzlesHandel::class, 'mate_in_one']);
+    Route::get('/mate-in-two', [PuzzlesHandel::class, 'mate_in_two']);
+    Route::get('/mate-in-three', [PuzzlesHandel::class, 'mate_in_three']);
+    Route::get('/mate-in-four', [PuzzlesHandel::class, 'mate_in_four']);
+    Route::get('/mate-in-five', [PuzzlesHandel::class, 'mate_in_five']);
+    Route::get('/mate-in-six', [PuzzlesHandel::class, 'mate_in_six']);
+    Route::get('/best-move', [PuzzlesHandel::class, 'best_move']);
+    Route::get('/rundom-puzzle', [PuzzlesHandel::class, 'rundom_puzzle']);
 });
