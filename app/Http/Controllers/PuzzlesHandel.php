@@ -14,8 +14,7 @@ class PuzzlesHandel extends Controller
         ->where('category', 'one')
         ->where('id', rand( 1, Puzzles::all()->where('category', 'one')->count()));
 
-
-        return view('puzzles.puzzles', compact('collection'));
+        return view('puzzles.puzzle', compact('collection'));
     }
 
     public function mate_in_two()

@@ -91,21 +91,22 @@
            
           </div>
 
+
         </div>
         <div class="col-10 p-4">
           
-    <script src={{ asset('js/my-puzzles.js') }}></script>
-    <script src={{ asset('js/jquery-3.6.4.min.js') }}></script>
-    <script src={{ asset('js/chessboard-1.0.0.min.js') }}></script>
-    <script src={{ asset('js/chessboard-1.0.0.js') }}></script>
 
           @yield('content')
+
+          @yield('script')
+
+        @yield('scriptPuzzle')
         </div>
 
       </div>
     </div>
 
-   
+
 
 
     @extends('layouts.footer')

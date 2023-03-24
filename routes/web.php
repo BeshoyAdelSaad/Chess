@@ -25,7 +25,6 @@ Route::get('/play', function () {
     return view('play');
 });
 
-Route::get('/mate-in-two', [CompanyController::class,'checkPos']);
 
 Route::get('/test', [CompanyController::class,'handel']);
 
@@ -34,7 +33,10 @@ Route::resource('companies', CompanyController::class);
 
 Route::group(['prefix' => 'puzzles'], function(){
 
-    Route::get('/mate-in-one', [PuzzlesHandel::class, 'mate_in_one']);
+    Route::get('/mate-in-one', function()
+    {
+        return view('puzzles.puzzle');
+    });
     Route::get('/mate-in-two', [PuzzlesHandel::class, 'mate_in_two']);
     Route::get('/mate-in-three', [PuzzlesHandel::class, 'mate_in_three']);
     Route::get('/mate-in-four', [PuzzlesHandel::class, 'mate_in_four']);

@@ -23,7 +23,7 @@ class CompanyController extends Controller
             $address = $item->address;
         }
 
-    return view('puzzles.test', compact('address'));
+    return view('puzzles.test');
     }
 
     function checkPos()
