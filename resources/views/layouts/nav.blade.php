@@ -9,8 +9,9 @@
     <link rel="stylesheet" href={{ asset('css/all.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/bootstrap.min.css') }}>
     <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.css') }}>
-    <link rel="stylesheet" href={{ asset('css/chessboard-1.0.0.min.css') }}>
-
+    <script src={{ asset('js/jquery-3.6.4.min.js') }}></script>
+    <script src={{ asset('js/chessboard-1.0.0.min.js') }}></script>
+    <script src={{ asset('js/chessboard-1.0.0.js') }}></script>
 
 </head>
 <body>
@@ -84,8 +85,8 @@
               <a href="/puzzles/mate-in-four">Mate in 4</a>
               <a href="/puzzles/mate-in-five">Mate in 5</a>
               <a href="/puzzles/mate-in-six">Mate in 6</a>
-              <a href="best-move">Best Move</a>
-              <a href="rundom-puzzle">Rundom Puzzle</a>
+              <a href="/puzzles/best-move">Best Move</a>
+              <a href="/puzzles/rundom-puzzle">Rundom Puzzle</a>
             </div>
             <a href="#contact">Search</a>
            
@@ -93,14 +94,11 @@
 
 
         </div>
-        <div class="col-10 p-4">
-          
-
+        <div id="mainContent" class="col-10 p-4">
+       
           @yield('content')
 
-          @yield('script')
-
-        @yield('scriptPuzzle')
+          
         </div>
 
       </div>
@@ -108,7 +106,7 @@
 
 
 
-
+    
     @extends('layouts.footer')
 
 

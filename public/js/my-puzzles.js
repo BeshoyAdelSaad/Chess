@@ -2235,7 +2235,7 @@ const mateInOne = [
     ];
     
     const bestMove = [
-    '2rrb1k1/pp1n1ppp/2n1p3/q7/2P1NP2/B1Q1P1P1/P5BP/2R2RK1 w - - 0 1 [ Qxa5 Nxa5 Be7 ]',
+    '2rrb1k1/pp1n1ppp/2n1p3/q7/2P1NP2/B1Q1P1P1/P5BP/2R2RK1 w - - 0 1 [ wQ Qxa5 bN Nxa5 wB Be7 ]',
     '2r1kb1r/pp3ppp/4q3/3n4/8/2N1BP2/PP3KPP/R1Q4R b k - 0 1 [ ...Nxe3 if Qxe3 Bc5 or if Re1 Bc5 Ne4 Nc2+ ]',
     '2kr3r/1pp2nbp/2R3p1/1B1p3P/Q3qP2/4B3/PP4P1/4K2R w K - 1 0 [ Qa8+ Kd7 Rc4+ if Kd6 Qa3+ or if Ke6 Rxe4+ ]',
     '8/4Bn2/6pp/3R1p1k/7P/2r3PK/5P2/8 w - - 0 1 [ Bf6 if Rc4 Rd7 or if Rc7 g4# ]',

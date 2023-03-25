@@ -26,22 +26,19 @@ Route::get('/play', function () {
 });
 
 
-Route::get('/test', [CompanyController::class,'handel']);
 
 
 Route::resource('companies', CompanyController::class);
 
-Route::group(['prefix' => 'puzzles'], function(){
+Route::group([],function(){
 
-    Route::get('/mate-in-one', function()
-    {
-        return view('puzzles.puzzle');
-    });
-    Route::get('/mate-in-two', [PuzzlesHandel::class, 'mate_in_two']);
-    Route::get('/mate-in-three', [PuzzlesHandel::class, 'mate_in_three']);
-    Route::get('/mate-in-four', [PuzzlesHandel::class, 'mate_in_four']);
-    Route::get('/mate-in-five', [PuzzlesHandel::class, 'mate_in_five']);
-    Route::get('/mate-in-six', [PuzzlesHandel::class, 'mate_in_six']);
-    Route::get('/best-move', [PuzzlesHandel::class, 'best_move']);
-    Route::get('/rundom-puzzle', [PuzzlesHandel::class, 'rundom_puzzle']);
+    Route::get('/puzzles/mate-in-one', [PuzzlesHandel::class, 'mate_in_one']);
+    Route::get('/puzzles/mate-in-two', [PuzzlesHandel::class, 'mate_in_two']);
+    Route::get('/puzzles/mate-in-three', [PuzzlesHandel::class, 'mate_in_three']);
+    Route::get('/puzzles/mate-in-four', [PuzzlesHandel::class, 'mate_in_four']);
+    Route::get('/puzzles/mate-in-five', [PuzzlesHandel::class, 'mate_in_five']);
+    Route::get('/puzzles/mate-in-six', [PuzzlesHandel::class, 'mate_in_six']);
+    Route::get('/puzzles/best-move', [PuzzlesHandel::class, 'best_move']);
+    Route::get('/puzzles/rundom-puzzle', [PuzzlesHandel::class, 'rundom_puzzle']);
+
 });
