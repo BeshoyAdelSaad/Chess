@@ -7,25 +7,14 @@
   @foreach ($full_Fen as $puzzle)
     
   @endforeach
-  <div id="w" style="display:none;z-index:1000;opacity: .78;" class="bg-primary rounded position-absolute top-50 start-50 translate-middle">
-    <img src="{{ asset('img/chesspieces/wikipedia/wB.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/wN.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/wR.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/wQ.png') }}" alt="">
-</div>
-<div id="b" style="display:none;z-index: 1000;opacity: .78;" class="bg-primary rounded position-absolute top-50 start-50 translate-middle">
-    <img src="{{ asset('img/chesspieces/wikipedia/bB.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/bN.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/bR.png') }}" alt="">
-    <img src="{{ asset('img/chesspieces/wikipedia/bQ.png') }}" alt="">
-</div>
+
 <div class="container-fluid p-1">
   <div class="row">
 
     <div class="container text-bg-primary text-center rounded mb-3">
       <h1>Practise</h1>
     </div>
-    <div class="col-sm-8 text-center">
+    <div class="col-sm-8 text-center mt-4">
       <div id="myBoard" style="width: 400px; margin: auto"></div>
     </div>
     

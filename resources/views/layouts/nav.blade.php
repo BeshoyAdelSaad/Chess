@@ -35,9 +35,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Online</a></li>
-                  <li><a class="dropdown-item" href="#">My Friend</a></li>
-                  <li><a class="dropdown-item" href="#">VS Computer</a></li>
-                  <li><a class="dropdown-item" href="#">Whit me</a></li>
+                  <li><a class="dropdown-item" href="#">Friend</a></li>
+                  <li><a class="dropdown-item" href="{{ route('computer') }}">Computer</a></li>
+                  <li><a class="dropdown-item" href="{{ route('withme') }}">Whit me</a></li>
                 </ul>
               </li>
               <li class="nav-item">

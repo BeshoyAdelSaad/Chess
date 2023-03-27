@@ -42,3 +42,15 @@ Route::group([],function(){
     Route::get('/puzzles/rundom-puzzle', [PuzzlesHandel::class, 'rundom_puzzle']);
 
 });
+
+Route::group(['prefix' => 'play'], function(){
+    Route::get('/vs-computer', function(){
+
+        return view('play.computer');
+    })->name('computer');
+
+    Route::get('/with-me', function(){
+
+        return view('play.withme');
+    })->name('withme');
+});
