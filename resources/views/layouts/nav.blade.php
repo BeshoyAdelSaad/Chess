@@ -52,14 +52,13 @@
             </ul>
           </div>
 
-        
-          @auth
+        @auth
           <a href="#">Profile</a>
           <img src="" alt="Avatar">
           @endauth
-          <a href="#" class="btn btn-outline-secondary m-3">login</a>
-          <a href="#" class="btn btn-outline-secondary">Register</a>
-
+          
+          <a href="{{ Route('login-page') }}" class="btn btn-outline-secondary m-3">login</a>
+          <a href="{{ Route('register-page') }}" class="btn btn-outline-secondary">Register</a>
         </div>
 
       </nav>
