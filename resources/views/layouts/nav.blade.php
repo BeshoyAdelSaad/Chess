@@ -55,7 +55,7 @@
         @auth
           <a href="#">Profile</a>
           <img src="" alt="Avatar">
-          @endauth
+        @endauth
           
           <a href="{{ Route('login-page') }}" class="btn btn-outline-secondary m-3">login</a>
           <a href="{{ Route('register-page') }}" class="btn btn-outline-secondary">Register</a>
