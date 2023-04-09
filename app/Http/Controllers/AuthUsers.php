@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Validation\Rule;
 
 class AuthUsers extends Controller
@@ -20,15 +21,17 @@ class AuthUsers extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:100'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required','confirmed', 'min:8', 'max:255']
         ]);
 
-        $request['password'] = bcrypt($request['password']);
+        $data['password'] = bcrypt($request['password']);
 
-        User::create($request->post());
+        $user = User::create($data);
+
+        auth()->login($user);
 
         return redirect()->route('home');
      
@@ -39,17 +42,22 @@ class AuthUsers extends Controller
         return view('auth.login');
     } 
 
-    public function login()
+    public function login(Request $request)
     {
         $credentials = request(['email', 'password']);
-
         if (! $token = auth()->attempt($credentials)) {
             return back()->withErrors(['email'=> 'Invalid email or password'])->onlyInput('email');
         }
-
-
         return redirect()->route('home')->with('token',$token);
     }
 ///////////////////////////////////////////////////////////////////////////////////
 
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home')->with('message', 'Successfully logged out');
+    }
 }

@@ -19,6 +19,12 @@
                 <div class="pull-right mb-2">
                     <a class="btn btn-success" href="/data">Go To Test Page</a>
                 </div>
+                <div class="pull-right mb-2">
+                    <a class="btn btn-success" href="/add/puzzles/mate-in-one">Add puzzles mate in 1</a>
+                </div>
+                <div class="pull-right mb-2">
+                    <a class="btn btn-success" href="/add/puzzles/mate-in-two">Add puzzles mate in 2</a>
+                </div>
             </div>
         </div>
         @if ($message = Session::get('success'))
