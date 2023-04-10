@@ -61,7 +61,6 @@ function getFEN()
   let moves =  {!! json_encode($puzzle->num_moves) !!};
 
   let fullFEN = fen + " " + color + " " + castle + " " + moves;
-  console.log(fullFEN);
   return fullFEN;
 }
 

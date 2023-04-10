@@ -16,7 +16,8 @@ class Games extends Model
         'to_user_id',
         'win_id',
         'moves',
-        'messages'
+        'messages',
+        'player'
     ];
 
     public function userGames()
